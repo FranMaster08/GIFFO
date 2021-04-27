@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>GIFOS HOME</title>
+</head>
+<body>
+
+    <!-- header start here -->
+
+    <div class="blueline"></div>
+
+    <header>
+
+        <figure class="logo1"> <img id="logo_mobile1"  src="./assets/logo-mobile.svg" alt="logo"> </figure>
+
+
+        <figure class="logo2"> <img id="logo_escritorio2" src="./assets/logo-desktop.svg" alt="logo"> </figure>
+
+
+        <nav class="navbar">
+            
+            <input type="checkbox" name="#" id="#">
+            
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <div class="hamburguer_menu">
+
+                <ul>
+                    <li id="dark_mode">  MODO NOCTURNO</li>
+                    <li class="linea"> </li >
+                    <li> <a  href="favoritos.html"> FAVORITOS </a> <br >
+                        <span class="linea"> </span > 
+                    </li>
+                    <li> <a  href="./misGifos.html"> MIS GIFOS </a> <br >
+                        <span class="linea"> </span > 
+                    </li>
+                </ul>
+
+                <div  class="cruz"> <a href="crearGifo.html"><img  src="./assets/button-crear-gifo.svg" alt="Crear GIFO" class='crear-gifo-btn'> </a>  </div>
+
+            </div>
+
+        </nav>
+        
+    </header>
+    <!-- header finish here -->
+
+<!-- main start here -->
+<main>
+    <section class="seccion1">
+
+        <h1 >Inspirate, busca, guarda, y crea <br> los mejores <span>gifos</span></h1>
+
+        <img class="home_image" src="./assets/ilustra_header.svg" alt="family_GIFOS">
+
+        <div id="contenedor_searcher">
+            
+            <form  class="border_search">
+
+                <div id="contenedor_buscador">
+                    <input type="text" name="buscador_gifos" id="buscador" placeholder="Busca GIFOS y más">
+                    <button type="submit" id="iconono_buscador"> <img id="icon_buscador" src="./assets/icon-search.svg" alt=""></button>
+                    <button type="reset" id="xbutton"> <img src="./assets/close.svg" alt=""></button>
+                </div>
+
+                <div id="line_suggestion" class="linea_suggestion"></div>
+                
+                <div id="suggestions" class="show_hide">
+    
+                    <ul id="match_list" class="match_list_styles">
+                        <!-- aca van las sugerencias del autocomplete -->
+        
+        
+                    </ul>
+    
+                </div>
+                
+            </form>
+
+
+        </div>
+
+    </section>
+
+    <section class="seccion2">
+
+        <h3  class="trending_title">Trending:</h3>
+
+        <p>Reactions, Entertainment, sports, Stikers, Artists</p>
+
+        <!-- h2 titulo de la busqueda -->
+        <h2 id="titulo_busqueda"> </h2> 
+
+        <div id="resultados_busqueda">
+            <!-- imagenes de gifos acá -->
+        </div>
+
+        <!-- Boton ver mas -->
+        <div id="ver_mas" class="boton_ver_mas">
+            <input type="button" value="Ver más" id="mirar_mas">
+        </div>
+
+        <div id="resultados_busqueda2">
+            <!-- otros 12 gifos acá -->
+        </div>
+        
+    </section>
+  
+    <section id="seccion3_id" class="seccion3">
+
+        <h2 id="h2_id">Trending GIFOS</h2>
+
+        <p id="ultimos_trandings">Mira los últimos <br> GIFOS de nuestra comunidad.</p>
+
+        <div id="list_gifos_id" class="list_gifos">
+
+            <div id="left_arrow_id" class="left_arrow">
+                <img id="flecha_isquierda" src="./assets/button-slider-left.svg" alt="">
+            </div>
+
+            <div id="contenedor_carrusel" class="contenedor_carrusel">
+
+                <!-- Acá van los gifos traidos del endpoint trending -->
+
+            </div>
+           
+                <div id="rigth_arrow_id" class="rigth_arrow">
+                    <img id="flecha_derecha" src="./assets/Button-Slider-right-hover.svg" alt="">
+                </div>
+        </div>
+
+    </section>
+     <!-- The Modal -->
+     <div id="myModal" class="modal">
+
+        <span class="close">&times;</span>
+
+        <img class="modal-content" id="img01" src="#" alt="aca se muestra el gifo expandido">
+
+        <div id="options">
+
+            <div class="usuario">
+
+                <div>
+                    <h2 id="titulo_gifo">Título GIFO</h2>
+                    <h3 id="gifo_usuario">User</h3>
+                </div>
+               
+            </div>
+
+            <div class="iconos_favoritos_descargar">
+
+                <span id="corazon2" class="corazon">
+                    <img  src="./assets/icon-fav-active.svg" alt="">
+                </span>
+
+                <button class="borde_boton_descarga">
+                    <img class="btn_descarga_mobile_2" id="btn_descarga_mobile" src="./assets/icon-download.svg" alt="">
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    
+    
+</main>
+<!-- main finish here -->
+
+<!-- footer start here -->
+
+<footer class="pie_de_pagina">
+
+
+    <div class="social">
+
+        <h4 id="compartir_enid" class="compartir_en">Compartir en :</h4>
+
+        <div class="contenedor_social">
+
+            <div class="icon">
+                <a href="https://www.facebook.com/"> <img src="./assets/icon_facebook.svg" alt="icono facebook"> </a>
+            </div>
+
+            <div class="icon">
+                <a href="https://twitter.com"> <img src="./assets/icon-twitter.svg" alt="icono twitter"> </a>
+            </div>
+
+            <div class="icon">
+                <a href="https://www.instagram.com/"> <img src="./assets/icon_instagram.svg" alt="icono instagram"> </a> 
+            </div>
+
+        </div>
+
+        
+        
+    </div>
+    
+    <p id="rightsid" class="rights">© GIFOS 2020 All Rights Reserved.</p>
+    
+</footer>
+
+<div class="linea_azul_footer"></div>
+
+<!-- footer finish here -->
+
+
+
+    
+        <script src="./JS/trending.js"></script>
+        <script src="./JS/search.js"></script>
+        <script src="./JS/night-mode.js"></script>
+    </body>
+
+    </html>

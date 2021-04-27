@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREAR GIFOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/css/styles.css">
+</head>
+<body>
+
+
+    <!-- header start here -->
+
+    <div class="blueline"></div>
+
+    <header>
+
+        <figure class="logo1"> <a href="./index.html"><img id="logo_mobile1"  src="./assets/logo-mobile.svg" alt="logo"> </a></figure>
+
+
+        <figure class="logo2"> <a href="./index.html"><img id="logo_escritorio2" src="./assets/logo-desktop.svg" alt="logo"></a> </figure>
+
+
+        <nav class="navbar">
+            
+            <input type="checkbox" name="#" id="#">
+            
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <div class="hamburguer_menu">
+
+                <ul>
+                    <li id="dark_mode">  Modo Nocturno</li>
+                    <li class="linea"> </li >
+                    <li> <a  href="favoritos.html"> Favoritos </a> <br >
+                        <span class="linea"> </span > 
+                    </li>
+                    <li> <a  href="./misGifos.html"> Mis GIFOS </a> <br >
+                        <span class="linea"> </span > 
+                    </li>
+                </ul>
+
+                <div  class="cruz"> <a href="crearGifo.html"><img  src="./assets/button-crear-gifo.svg" alt="Crear GIFO"> </a>  </div>
+
+            </div>
+
+        </nav>
+        
+    </header>
+    <!-- header finish here -->
+
+
+
+    <!-- main start here -->
+
+   <!-- Crear gifs -->
+	<div class="crearGif hidden" id="createGifSection">
+
+		<div class="crearGif__container">
+
+			<!-- cámara -->
+			<div class="crearGif__camara">
+				<img id="camera" src="assets/camara.svg" alt="cámara filmadora ilustrativa">
+				<img class="path" id="path" src="assets/element-luz-camara.svg" alt="luz de camara filmadora">
+			</div>
+
+			<!-- recuadro de grabación -->
+			<div class="crearGif__recordingZone">
+
+				<!-- bordes para estilos -->
+				<div class="corner top--left"></div>
+				<div class="corner top--right"></div>
+				<div class="corner bottom--left"></div>
+				<div class="corner bottom--right"></div>
+
+
+				<!-- recuadro de grabación -->
+				<div class="crearGif__recordingZone__content">
+
+					
+					<h3 class="crearGif__title" id="crearGif_title">Aquí podrás <br> crear tus propios <span
+							class="aqua-text">GIFOS</span> </h3>
+				
+					<p class="crearGif__text" id="crearGif_text">¡Crea tu GIFO en solo 3 pasos! <br> (solo necesitas
+						una
+						cámara para grabar un video)</p>
+					<!-- VER SI CONVIENE METER EL GIF DESDE ACA O HACER UNA FUNCION DE TEMPLATE -->
+					<img class="recorded_video hidden" src="" id="recorded_gifo" ></img>
+
+				</div>
+			</div>
+			<!-- celuloide -->
+
+			<div class="crearGif__celluloidFilm">
+				<img class="celuloide" id="celuloide" src="assets/pelicula.svg" alt="celuloide ilustracion">
+			</div>
+
+		</div>
+
+		<div class="pagination">
+			<p class="step" id="step-1">1</p>
+			<p class="step" id="step-2">2</p>
+			<p class="step" id="step-3">3</p>
+		</div>
+
+		<!-- linea decorativa -->
+		<hr class="border">
+
+		<!-- botones -->
+		<div class="button__container">
+			<a class="button" id="button--comenzar">COMENZAR</a>
+		</div>
+	</div>
+
+
+    
+   <!-- footer start here -->
+
+<footer class="pie_de_pagina">
+
+
+    <div class="social">
+
+        <h4 id="compartir_enid" class="compartir_en">Compartir en :</h4>
+
+        <div class="contenedor_social">
+
+            <div class="icon">
+                <a href="https://www.facebook.com/"> <img src="./assets/icon_facebook.svg" alt="icono facebook"> </a>
+            </div>
+
+            <div class="icon">
+                <a href="https://twitter.com"> <img src="./assets/icon-twitter.svg" alt="icono twitter"> </a>
+            </div>
+
+            <div class="icon">
+                <a href="https://www.instagram.com/"> <img src="./assets/icon_instagram.svg" alt="icono instagram"> </a> 
+            </div>
+
+        </div>
+
+        
+        
+    </div>
+    
+    <p id="rightsid" class="rights">© GIFOS 2020 All Rights Reserved.</p>
+    
+</footer>
+
+<div class="linea_azul_footer"></div>
+
+<!-- footer finish here -->
+
+
+<script src="./JS/night-mode.js"></script>
+</body>
+
+</html>

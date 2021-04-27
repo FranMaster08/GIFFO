@@ -1,0 +1,144 @@
+
+@media screen and (max-width:768px){
+
+// ----------Sección--Favoritos y Sección--GIFOS----------------------------------
+
+
+.contenedor_favoritos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2{
+        font-family: 'Montserrat', sans-serif; 
+        font-size: 20px;
+        color: #572EE5;
+        line-height: 30px; 
+        margin-top: 5px;
+        margin-bottom: 46px;           
+    }
+
+}
+.contenedor_favoritos2{
+    font-family:'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #50E3C2;
+    text-align: center;
+    line-height: 33px;
+    margin: 55px 0px 109px 0px;
+    
+}
+.contenedor_imagenes_favoritos{
+    display: grid;
+    grid-template-columns: 156px 156px;
+    grid-template-rows: 120px 120px 120px 120px 120px 120px;
+    grid-column-gap: 21px;
+    grid-row-gap: 25px;
+    justify-content: center;
+}
+.boton_ver_mas{
+    border: 1px solid #572EE5;
+    width: 127px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 78px 124px;
+    display: none;
+
+    input{
+        border: none;
+        background: none;
+        width: 80px;
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: bold;
+        font-size: 13px;
+        color: #572EE5;
+        text-transform: uppercase;
+    }
+}
+.contenedor_crear_gifo2{
+    font-family:'Montserrat', sans-serif;
+    font-size: 22px;
+    color: #50E3C2;
+    text-align: center;
+    line-height: 33px;
+    margin: 109px 0px 109px 0px;
+    
+}
+
+}
+
+//Desktop
+@media screen and (min-width:1024px){
+// ---------------- sección favoritos y--Sección GIFOS-----------------------
+    
+.contenedor_favoritos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -65px;
+    h2{
+        font-family: 'Montserrat', sans-serif; 
+        font-size: 25px;
+        color: #572EE5;
+        line-height: 30px;
+        margin-bottom: 36px;
+    }
+}
+.contenedor_favoritos2{
+    font-family:'Montserrat', sans-serif;
+    font-size: 22px;
+    color: #50E3C2;
+    text-align: center;
+    line-height: 33px;
+    margin: 109px 0px 109px 0px;
+    
+}
+.contenedor_imagenes_favoritos{
+    display: grid;
+    grid-template-columns: 260px 260px 260px 260px;
+    grid-template-rows: 200px 200px 200px;
+    grid-column-gap: 29px;
+    grid-row-gap: 35px;
+    justify-content: center;
+    margin-bottom: 100px;
+    
+
+}
+.boton_ver_mas{
+    border: 1px solid #572EE5;
+    width: 127px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+    display: none;
+
+    input{
+        border: none;
+        background: none;
+        width: 80px;
+        font-family: 'Montserrat', sans-serif; 
+        font-weight: bold;
+        font-size: 13px;
+        color: #572EE5;
+        text-transform: uppercase;
+    }
+}
+
+
+// -----------------sección Crear GIFO--------------------------
+.contenedor_crear_gifo2{
+    font-family:'Montserrat', sans-serif;
+    font-size: 22px;
+    color: #50E3C2;
+    text-align: center;
+    line-height: 33px;
+    margin: 109px 0px 109px 0px;
+    
+}
+
+}
