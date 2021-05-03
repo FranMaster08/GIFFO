@@ -25,10 +25,10 @@
                 #dark_mode{
                     color: #FFFFFF;
                 }
-                .linea{
-                    border: 1px solid #FFFFFF;
+                // .linea{
+                //     border: 1px solid #FFFFFF;
                 
-                }
+                // }
             }
         
         }
@@ -64,17 +64,20 @@
             h2{
                 color: #FFFFFF;
             }
+            P{
+                color: #FFFFFF;
+            }
         }
         footer{
             
-            h4{
+            #compartir_enid{
 
                 color: #FFFFFF;        
             }
             i>img{
                 padding: 22px 20px 46px 0px;
             }
-            p{
+            #rightsid{
                 font-family: 'Roboto', sans-serif;
                 font-size: 14px;
                 color: #FFFFFF;
@@ -91,20 +94,96 @@
 
 @media screen and (min-width:1024px){
     .mode_dark{
+    
         background-color:  #37383C;
-
+       
         .blueline{
             display: none;
          
         }
-        .linea_azul_footer{
-            display: none;
+
+    header{
+        
+        .navbar{
+    
+            span{
+                background-color: #FFFFFF;
+            }
+    
+            .circulo_cruz>ul{
+                background: #000000;
+            }
+           
+            a{
+                color: #FFFFFF;
+            }
+            #dark_mode{
+                color: #FFFFFF;
+                cursor: pointer;
+            }
+            // .linea{
+            //     border: 1px solid #FFFFFF;
+            
+            // }
+        }
+    
+    }
+
+    .seccion1{
+        
+        h1{
+            color: #FFFFFF;
         }
 
+        .border_search{
         
+            
+           
+            #buscador{
+                background-color: #37383C;
+                color: #9CAFC3;
+            }
+        
+        }
     }
+    .seccion2{
+        h3{
+            color: #FFFFFF;
+        }
+        p{
+            color: #FFFFFF;
+        }
+    }
+    .seccion3{
+        background: #222326;
+        
+        h2{
+            color: #FFFFFF;
+        }
+        P{
+            color: #FFFFFF;
+        }
+    }
+    footer{
+        
+        #compartir_enid{
 
-    #dark_mode{
-        cursor: pointer;
+            color: #FFFFFF;        
+        }
+        i>img{
+            padding: 22px 20px 46px 0px;
+        }
+        #rightsid{
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #FFFFFF;
+            line-height: 20px;
+            margin-bottom: 23px;
+        }
+
     }
+    .linea_azul_footer{
+       display: none;
+    }
+}    
 }
