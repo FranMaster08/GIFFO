@@ -228,6 +228,9 @@ let main = () => {
     if (document.title == 'GIFOS HOME') {
         RenderizarTrendings()
     }
+    if (document.title == 'MIS GIFOS') {
+        RenderizarTrendings()
+    }
 }
 
 
