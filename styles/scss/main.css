@@ -161,9 +161,7 @@
       -ms-flex-line-pack: center;
           align-content: center; }
       .seccion3 .list_gifos .left_arrow {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
+        display: none;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
@@ -173,15 +171,16 @@
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        overflow: scroll; }
+        overflow: scroll;
+        -webkit-scroll-snap-type: x mandatory;
+            -ms-scroll-snap-type: x mandatory;
+                scroll-snap-type: x mandatory; }
       .seccion3 .list_gifos img {
-        width: 100%;
-        height: 100%;
+        width: 243px;
+        height: 187px;
         padding-right: 20px; }
       .seccion3 .list_gifos .rigth_arrow {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
+        display: none;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;
@@ -267,6 +266,8 @@
         outline: none;
         background: transparent;
         border: 0px; }
+        .seccion1 .border_search #iconono_buscador #icon_buscador {
+          cursor: pointer; }
       .seccion1 .border_search #xbutton {
         display: none;
         -webkit-transition: 0.3s;
@@ -306,9 +307,22 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
-      gap: 10px 10px;
-      grid-template-areas: ". . . ." ". . . ." ". . . .";
+      -webkit-column-gap: 20px;
+              column-gap: 20px;
+      row-gap: 20px;
       margin-top: 20vh; }
+      .seccion2 #resultados_busqueda .image {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content; }
+        .seccion2 #resultados_busqueda .image .imagenGif {
+          width: 260px;
+          height: 200px; }
     .seccion2 .boton_ver_mas {
       display: -webkit-box;
       display: -ms-flexbox;

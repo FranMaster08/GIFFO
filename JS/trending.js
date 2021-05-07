@@ -167,6 +167,7 @@ let modalDesktop = (e) => {
     modalImg.setAttribute('src', target);
     optionsText.style.display = "none";
 }
+//no funciona en favoritos y en mis gifos
 
 let renderFavs = () => {
     let localStorageGifsArray = [];
