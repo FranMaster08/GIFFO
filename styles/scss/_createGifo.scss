@@ -1,6 +1,7 @@
 .crearGif {
 	padding-top: 1%;
 	position: relative;
+	overflow: hidden;
 
 	&__container {
 		display: flex;
@@ -38,6 +39,7 @@
 		text-align: center;
 		align-items: center;
 		position: relative;
+		box-sizing: border-box;
 
 		body.darkMode & {
 			border: 1px solid #fff;
@@ -228,6 +230,15 @@
     font-size: 13px;
     color: #572ee5;
     cursor: pointer;
+		}
+		#button--grabar{
+			display: none;
+		}
+		#button--finalizar{
+			display: none;
+		}
+		#button--subirGifo{
+			display: none;
 		}
 	}
 }

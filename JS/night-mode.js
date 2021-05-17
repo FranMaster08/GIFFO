@@ -5,7 +5,8 @@ const sliderLeft = document.querySelector('#flecha_isquierda');
 const sliderRight = document.querySelector('#flecha_derecha');
 
 
-changeMode.addEventListener('click', function() {
+changeMode.addEventListener('click', function(e) {
+    e.preventDefault();
     document.body.classList.toggle('mode_dark');
     
     if(window.matchMedia("(min-width: 768px)").matches) {

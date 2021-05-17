@@ -1083,7 +1083,8 @@
     margin: 109px 0px 109px 0px; } }
 .crearGif {
   padding-top: 1%;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .crearGif__container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1130,7 +1131,9 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    position: relative; }
+    position: relative;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
     body.darkMode .crearGif__recordingZone {
       border: 1px solid #fff; }
   .crearGif__title {
@@ -1294,5 +1297,11 @@
     font-size: 13px;
     color: #572ee5;
     cursor: pointer; }
+  .crearGif .button__container #button--grabar {
+    display: none; }
+  .crearGif .button__container #button--finalizar {
+    display: none; }
+  .crearGif .button__container #button--subirGifo {
+    display: none; }
 
 /*# sourceMappingURL=styles.css.map */

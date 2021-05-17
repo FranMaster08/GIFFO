@@ -1,140 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>MIS GIFOS</title>
-</head>
-<body id ="cuerpo">
+  </head>
+  <body id="cuerpo">
     <!-- header start here -->
     <div class="blueline"></div>
     <header>
-        <figure class="logo1"> <a href="./index.html"> <img src="./assets/logo-mobile.svg" alt="logo"> </a> </figure>
-        <figure class="logo2"> <a href="./index.html"> <img src="./assets/logo-desktop.svg" alt="logo" > </a> </figure>
+      <figure class="logo1">
+        <a href="./index.html">
+          <img src="./assets/logo-mobile.svg" alt="logo" />
+        </a>
+      </figure>
+      <figure class="logo2">
+        <a href="./index.html">
+          <img src="./assets/logo-desktop.svg" alt="logo" />
+        </a>
+      </figure>
 
-        <nav class="navbar">
-            
-            <input type="checkbox" name="#" id="#">
-            
-            <span></span>
-            <span></span>
-            <span></span>
+      <nav class="navbar">
+        <input type="checkbox" name="#" id="#" />
 
-            <div class="hamburguer_menu">
+        <span></span>
+        <span></span>
+        <span></span>
 
-                <ul>
-                    <li> <a href=" " id='dark_mode'> MODO NOCTURNO </a> <br > </li>
-                    <li> <a href="./favoritos.html"> FAVORITOS </a> <br > </li>
-                    <li> <a href="./misGifos.html" > MIS GIFOS </a> <br > </li>
-                </ul>
+        <div class="hamburguer_menu">
+          <ul>
+            <li><a href=" " id="dark_mode"> MODO NOCTURNO </a> <br /></li>
+            <li><a href="./favoritos.html"> FAVORITOS </a> <br /></li>
+            <li><a href="./misGifos.html"> MIS GIFOS </a> <br /></li>
+          </ul>
 
-                <div class="cruz"> <a href="crearGifo.html"> <img src="./assets/button-crear-gifo.svg" alt=""> </a> </div>
-
-            </div>
-
-        </nav>
-        
+          <div class="cruz">
+            <a href="crearGifo.html">
+              <img src="./assets/button-crear-gifo.svg" alt="" />
+            </a>
+          </div>
+        </div>
+      </nav>
     </header>
     <!-- header finish here -->
 
     <!-- main start here -->
 
     <main>
-        <div class="contenedor_favoritos">
-            <figure>
-                <img src="./assets/icon-mis-gifos.svg" alt="">
-            </figure>
-            <h2>Mis GIFOS</h2>
-        </div>
+      <div class="contenedor_favoritos">
+        <figure>
+          <img src="./assets/icon-mis-gifos.svg" alt="" />
+        </figure>
+        <h2>Mis GIFOS</h2>
+      </div>
 
+      <div id="conte_crear_gifo2" class="contenedor_crear_gifo2">
+        <img src="./assets/icon-mis-gifos-sin-contenido.svg" alt="" />
+        <p>¡Anímate a crear tu primer GIFO!</p>
+      </div>
 
-        <div id="conte_crear_gifo2" class="contenedor_crear_gifo2">
-            <img src="./assets/icon-mis-gifos-sin-contenido.svg" alt="">
-            <p>¡Anímate a crear tu primer GIFO!</p>
-        </div>
+      <div id="gifsCreados" class="contenedor_imagenes_favoritos"></div>
 
-        <div id="gifsCreados" class="contenedor_imagenes_favoritos">
-            
-        </div>
+      <!-- Boton ver mas -->
+      <div class="boton_ver_mas">
+        <input type="button" value="Ver más" />
+      </div>
 
-         <!-- Boton ver mas -->
-         <div class="boton_ver_mas">
-            <input type="button" value="Ver más">
+      <section class="seccion3">
+        <h2>Trending GIFOS</h2>
+
+        <p>
+          Mira los últimos <br />
+          GIFOS de nuestra comunidad.
+        </p>
+
+        <div id="list_gifos_id" class="list_gifos">
+          <div id="left_arrow_id" class="left_arrow">
+            <img src="./assets/button-slider-left.svg" alt="" />
           </div>
 
+          <div id="contenedor_carrusel" class="contenedor_carrusel">
+            <!-- Acá van los gifos traidos del endpoint trending -->
+          </div>
 
-          <section class="seccion3">
+          <div id="rigth_arrow_id" class="rigth_arrow">
+            <img src="./assets/Button-Slider-right-hover.svg" alt="" />
+          </div>
+        </div>
+      </section>
 
-            <h2>Trending GIFOS</h2>
+      <!-- main finish here -->
 
-            <p>Mira los últimos <br> GIFOS de nuestra comunidad.</p>
+      <!-- footer start here -->
 
-            <div id="list_gifos_id" class="list_gifos">
+      <footer class="pie_de_pagina">
+        <div class="social">
+          <h4 id="compartir_enid" class="compartir_en">Compartir en :</h4>
 
-                <div id="left_arrow_id" class="left_arrow">
-                    <img src="./assets/button-slider-left.svg" alt="">
-                </div>
-
-                <div id="contenedor_carrusel" class="contenedor_carrusel">
-
-                    <!-- Acá van los gifos traidos del endpoint trending -->
-
-                </div>
-               
-                    <div id="rigth_arrow_id" class="rigth_arrow">
-                        <img src="./assets/Button-Slider-right-hover.svg" alt="">
-                    </div>
+          <div class="contenedor_social">
+            <div class="icon">
+              <a href="https://www.facebook.com/">
+                <img src="./assets/icon_facebook.svg" alt="icono facebook" />
+              </a>
             </div>
 
-        </section>
-        
+            <div class="icon">
+              <a href="https://twitter.com">
+                <img src="./assets/icon-twitter.svg" alt="icono twitter" />
+              </a>
+            </div>
 
-            <!-- main finish here -->
+            <div class="icon">
+              <a href="https://www.instagram.com/">
+                <img src="./assets/icon_instagram.svg" alt="icono instagram" />
+              </a>
+            </div>
+          </div>
+        </div>
 
-            <!-- footer start here -->
-             
-    
-            <footer class="pie_de_pagina">
+        <p id="rightsid" class="rights">© GIFOS 2020 All Rights Reserved.</p>
+      </footer>
 
+      <!-- footer finish here -->
 
-                <div class="social">
-        
-                    <h4 id="compartir_enid" class="compartir_en">Compartir en :</h4>
-        
-                    <div class="contenedor_social">
-        
-                        <div class="icon">
-                            <a href="https://www.facebook.com/"> <img src="./assets/icon_facebook.svg" alt="icono facebook"> </a>
-                        </div>
-            
-                        <div class="icon">
-                            <a href="https://twitter.com"> <img src="./assets/icon-twitter.svg" alt="icono twitter"> </a>
-                        </div>
-            
-                        <div class="icon">
-                            <a href="https://www.instagram.com/"> <img src="./assets/icon_instagram.svg" alt="icono instagram"> </a> 
-                        </div>
-        
-                    </div>
-        
-                    
-                    
-                </div>
-                
-                <p id="rightsid" class="rights">© GIFOS 2020 All Rights Reserved.</p>
-                
-            </footer>
-
-      
-            <!-- footer finish here -->
-
-            <div class="linea_azul_footer"></div>
-        
-        </main>
-        <script src="./JS/trending.js"></script>
-        <script src="./JS/night-mode.js"></script>
-    </body>
+      <div class="linea_azul_footer"></div>
+    </main>
+    <script src="./JS/trending.js"></script>
+    <script src="./JS/misGifos.js"></script>
+    <script src="./JS/night-mode.js"></script>
+  </body>
 </html>
