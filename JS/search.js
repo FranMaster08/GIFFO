@@ -49,7 +49,6 @@ const autocomplete = async (ev) => {
 
 //getting input for search
 const searchContent = async (e) => {
-    console.log('Observamos a e:' + e);
     e.preventDefault()
     if (e) {
         const gifosSearch = await getGifosSearch(Paginacion, searchInput?.value);
@@ -66,10 +65,8 @@ const viewMore = async () => {
 const fetchSearch = (arr, flagViemore = false) => {
 
 
-    // searchResults.innerHTML = '';
-
     if (arr.data.length === 0) {
-
+        searchResults.innerHTML = ''
         let noResultsTitle = document.createElement('h2');
         noResultsTitle.innerText = searchInput.value;
 
@@ -113,9 +110,7 @@ const fetchSearch = (arr, flagViemore = false) => {
     }
 
 }
-document.querySelector('#iconono_buscador').addEventListener('click', (e) => {
-    e.preventDefault()
-})
+
 searchInput?.addEventListener('keyup', autocomplete);
 search?.addEventListener('click', searchContent);
 
@@ -124,4 +119,8 @@ document.addEventListener('keydown', (e) => {
 
         search.click();
     }
+})
+document.querySelector('#iconono_buscador').addEventListener('click', (e) => {
+    e.preventDefault()
+    search.click()
 })

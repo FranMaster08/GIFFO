@@ -77,14 +77,6 @@ const modal = (e) => {
     optionsText.style.display = "flex";
     document.querySelector('#titulo_gifo').innerText = e.target.dataset.title;
     document.querySelector('#gifo_usuario').innerText = e.target.dataset.username;
-    document.querySelector('#corazon2').addEventListener('click', () => {
-        let localStorageGifs = localStorage.getItem('favoritos');
-        let localStorageGifsArray = [];
-        if (localStorageGifs != null)
-            localStorageGifsArray = JSON.parse(localStorageGifs);
-        localStorageGifsArray.push(target)
-        localStorage.setItem('favoritos', JSON.stringify(localStorageGifsArray));
-    })
 }
 let slideRight = () => {
     l++
@@ -127,12 +119,17 @@ let maximizeGif = (element) => {
 
 }
 let addFav = (e) => {
-    let Src = e.target.parentElement.parentElement.parentElement.parentElement.children[0].src
+    let Src = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
     let localStorageGifs = JSON.parse(localStorage.getItem('favoritos'));
     let Auxiliar = localStorageGifs ? localStorageGifs : []
-    let verificacion = Auxiliar.filter(x => x == Src)
+    let verificacion = Auxiliar.filter(x => x == Src.src)
     if (verificacion.length == 0) {
-        Auxiliar.push(Src)
+        let favorito = {
+            datatitle: Src.getAttribute('data-title'),
+            userName: Src.getAttribute('data-username'),
+            src: Src.src
+        }
+        Auxiliar.push(favorito)
         localStorage.setItem('favoritos', JSON.stringify(Auxiliar));
     }
     else
@@ -165,7 +162,7 @@ let modalDesktop = (e) => {
     containerModal.style.display = "block";
     let target = e.src ? e.src : e.target.src;
     modalImg.setAttribute('src', target);
-    optionsText.style.display = "none";
+    optionsText.style.display = "flex";
 }
 //no funciona en favoritos y en mis gifos
 
@@ -180,8 +177,10 @@ let renderFavs = () => {
 
     localStorageGifsArray.map(x => {
         let images = document.createElement('img');
-        images.setAttribute('src', x);
+        images.setAttribute('src', x.src);
         images.classList.add('trending');
+        images.setAttribute('data-title', x.datatitle);
+        images.setAttribute('data-username', x.userName);
         images.classList.add('sacarFavoritos');
         images.setAttribute('id', 'gif');
         images.style.height = "100%";
@@ -216,7 +215,14 @@ let renderFavs = () => {
     })
     document.querySelector('#imagenes_favoritos').addEventListener('click', (e) => {
 
-        deleteFromFavs(e.target.parentElement.parentElement.parentElement.parentElement.children[0]);
+        let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+        console.log(e.target);  
+        if (e.target.classList.contains('guardar_favorito_corazon'))
+              deleteFromFavs(objetivo)
+          if (e.target.classList.contains('descargar_gifo_escritorio'))
+              downloadGif(e)
+          if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
+              modalDesktop(objetivo)
     })
 }
 
@@ -240,7 +246,7 @@ let deleteFromFavs = (e) => {
         if (e.classList.contains('sacarFavoritos')) {
             let localStorageGifs = JSON.parse(localStorage.getItem('favoritos'));
             let Auxiliar = localStorageGifs ? localStorageGifs : []
-            let verificacion = Auxiliar.filter(item => item != e.src)
+            let verificacion = Auxiliar.filter(item => item.src != e.src)
             localStorage.setItem('favoritos', JSON.stringify(verificacion));
             renderFavs()
         }
