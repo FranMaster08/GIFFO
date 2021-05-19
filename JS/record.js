@@ -36,6 +36,15 @@ const startVideo = () => {
    grabar.style.display = "block"
 }
 
+function stopStreamedVideo(videoElem) {
+   const stream = videoElem.srcObject;
+   const tracks = stream.getTracks();
+   tracks.forEach(function(track) {
+     track.stop();
+   });
+   videoElem.srcObject = null;
+ }
+
 function getStreamAndRecord() {
    startVideo();
    const video = document.querySelector("video")
@@ -78,6 +87,8 @@ function getStreamAndRecord() {
             const { data:gifData } =  await uploadGif(form);
             subir.style.display = "block";
             mostrarPreview(gifData);
+            stopStreamedVideo(video)
+            
          })
       })
    })
