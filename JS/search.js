@@ -72,6 +72,7 @@ const fetchSearch = (arr, flagViemore = false) => {
 
         let noResultsImg = document.createElement('img');
         noResultsImg.setAttribute('src', './assets/icon-busqueda-sin-resultado.svg');
+        noResultsImg.setAttribute('class','noResultsImg')
 
         let noResultsSuggestion = document.createElement('h3');
         noResultsSuggestion.innerText = 'Intenta con otra búsqueda';
@@ -89,16 +90,62 @@ const fetchSearch = (arr, flagViemore = false) => {
         const containerGifos = document.querySelector('#resultados_busqueda')
        
 
-        arr.data.forEach(el => {
-            gifosFound.push(el);
-            const divGif = document.createElement('div');
-            divGif.classList.add('image');
-            const imageURL = el.images.fixed_height.url;
-            divGif.innerHTML =
-                `<img class="imagenGif" src="${imageURL}" alt="${el.title}">`
-          
-          
-            containerGifos.appendChild(divGif);
+        arr.data.forEach(x => {
+            gifosFound.push(x);
+            let images = document.createElement("img");
+            images.setAttribute("src", x.images.fixed_height.url);
+            images.classList.add("trending");
+            images.setAttribute('data-title', x.title);
+            images.setAttribute('data-username', x.username);
+            images.classList.add("sacarFavoritos");
+            images.setAttribute("id", "gif");
+            images.style.height = "100%";
+            images.style.width = "100%";
+            images.style.boxSizing = "border-box";
+        
+            let containerGifosHover = document.createElement("div");
+            containerGifosHover.style.display = "flex";
+            containerGifosHover.style.justifyContent = "space-around";
+            containerGifosHover.style.height = "200px";
+            containerGifosHover.style.width = "260px";
+            containerGifosHover.setAttribute("class", "contenedor_gifos_hover");
+            containerGifosHover.appendChild(images);
+            let mouseOverCard = document.createElement("div");
+            mouseOverCard.style.height = "100%";
+            mouseOverCard.style.width = "100%";
+            mouseOverCard.style.right = "0";
+            mouseOverCard.setAttribute("class", "mouse_over_tarjeta2 ");
+            mouseOverCard.innerHTML = `
+            <div class="opciones_mouse_over">
+                        <div class="borde_opciones_mause_over llegar_al_corazon">
+                            <img class = guardar_favorito_corazon src="./assets/icon-fav-hover.svg" alt="">
+                        </div>
+                        <div class="borde_opciones_mause_over click_descarga_gifo">
+                            <img class = "descargar_gifo_escritorio" id = "descargar_escritorio" src="./assets/icon-download.svg" alt="">
+                        </div>
+                        <div id="borde_opciones_mause_over_id" class="borde_opciones_mause_over">
+                            <img src="./assets/icon-max-normal.svg"  class = "expandir_gifo_desktop" id ="expandir_gifo" alt="">
+                        </div>                    
+                    </div>
+                    <div class="usuario2_mouse_over">
+                        <h3 class ="gifo_usuario_hover">${x.username}</h3>
+                        <h2 class ="titulo_gifo_hover" class="titulo_gifo_hover">${x.title}</h2>
+            </div>`;;
+            containerGifosHover.appendChild(mouseOverCard);
+            containerGifos.appendChild(containerGifosHover);
+
+            
+        })
+        containerGifos.addEventListener('click', (e) => {
+
+            let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+            console.log(e.target);  
+            if (e.target.classList.contains('guardar_favorito_corazon'))
+                  addFav(objetivo)
+              if (e.target.classList.contains('descargar_gifo_escritorio'))
+                  downloadGif(e)
+              if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
+                  modalDesktop(objetivo)
         })
 
         searchInput.innerText = "";
