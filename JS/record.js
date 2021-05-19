@@ -8,7 +8,7 @@ const uploadEndpoint = 'http://upload.giphy.com/v1/gifs?api_key=wUIs2kykDiUjqc9l
 
 function mostrarPreview ({id}) {
    const containerVideo = document.querySelector(".crearGif__recordingZone__content");
-   containerVideo.innerHTML= `<img class='preview' data-id='${id}' src='https://i.giphy.com/${id}.gif' />`;
+   containerVideo.innerHTML= `<img class='preview' data-id='${id}'  src='https://i.giphy.com/${id}.gif' />`;
 
 }
 
