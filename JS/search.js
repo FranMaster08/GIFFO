@@ -1,5 +1,3 @@
-
-
 let Paginacion = 0;
 const gifosFound = [];
 let searchInput = document.getElementById('buscador');
@@ -48,12 +46,12 @@ const autocomplete = async (ev) => {
 }
 
 //getting input for search
-const searchContent = async (e) => {
-    e.preventDefault()
-    if (e) {
-        const gifosSearch = await getGifosSearch(Paginacion, searchInput?.value);
-        fetchSearch(gifosSearch)
-    }
+const searchContent = async () => {
+
+
+    const gifosSearch = await getGifosSearch(Paginacion, searchInput?.value);
+    fetchSearch(gifosSearch)
+
 }
 
 const viewMore = async () => {
@@ -64,15 +62,16 @@ const viewMore = async () => {
 
 const fetchSearch = (arr, flagViemore = false) => {
 
-
+    let h2SearchResults = document.querySelector('#titulo_busqueda');
     if (arr.data.length === 0) {
+        h2SearchResults.innerText = ''
         searchResults.innerHTML = ''
         let noResultsTitle = document.createElement('h2');
         noResultsTitle.innerText = searchInput.value;
 
         let noResultsImg = document.createElement('img');
         noResultsImg.setAttribute('src', './assets/icon-busqueda-sin-resultado.svg');
-        noResultsImg.setAttribute('class','noResultsImg')
+        noResultsImg.setAttribute('class', 'noResultsImg')
 
         let noResultsSuggestion = document.createElement('h3');
         noResultsSuggestion.innerText = 'Intenta con otra búsqueda';
@@ -80,15 +79,14 @@ const fetchSearch = (arr, flagViemore = false) => {
         searchResults.append(noResultsTitle, noResultsImg, noResultsSuggestion);
 
     } else {
-      
-        let h2SearchResults = document.querySelector('#titulo_busqueda');
-        h2SearchResults.innerHTML = searchInput ? searchInput.value : 'experimento';
+
+        h2SearchResults.innerText = searchInput.value
         if (!flagViemore)
             searchResults.innerHTML = ""
-        searchResults.prepend(h2SearchResults);
-        h2SearchResults.style.display='block';
+        //searchResults.prepend(h2SearchResults);
+        // h2SearchResults.style.display='block';
         const containerGifos = document.querySelector('#resultados_busqueda')
-       
+
 
         arr.data.forEach(x => {
             gifosFound.push(x);
@@ -102,7 +100,7 @@ const fetchSearch = (arr, flagViemore = false) => {
             images.style.height = "100%";
             images.style.width = "100%";
             images.style.boxSizing = "border-box";
-        
+
             let containerGifosHover = document.createElement("div");
             containerGifosHover.style.display = "flex";
             containerGifosHover.style.justifyContent = "space-around";
@@ -121,7 +119,7 @@ const fetchSearch = (arr, flagViemore = false) => {
                             <img class = guardar_favorito_corazon src="./assets/icon-fav-hover.svg" alt="">
                         </div>
                         <div class="borde_opciones_mause_over click_descarga_gifo">
-                            <img class = "descargar_gifo_escritorio" id = "descargar_escritorio" src="./assets/icon-download.svg" alt="">
+                            <img class = "descargar_gifo_escritorio searchDownload" id = "descargar_escritorio" src="./assets/icon-download.svg" alt="">
                         </div>
                         <div id="borde_opciones_mause_over_id" class="borde_opciones_mause_over">
                             <img src="./assets/icon-max-normal.svg"  class = "expandir_gifo_desktop" id ="expandir_gifo" alt="">
@@ -134,18 +132,17 @@ const fetchSearch = (arr, flagViemore = false) => {
             containerGifosHover.appendChild(mouseOverCard);
             containerGifos.appendChild(containerGifosHover);
 
-            
+
         })
         containerGifos.addEventListener('click', (e) => {
 
-            let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
-            console.log(e.target);  
+            let objetivo = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+            console.log(e.target);
             if (e.target.classList.contains('guardar_favorito_corazon'))
-                  addFav(objetivo)
-              if (e.target.classList.contains('descargar_gifo_escritorio'))
-                  downloadGif(e)
-              if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
-                  modalDesktop(objetivo)
+                addFav(objetivo)
+
+            if (e.target.getAttribute('id') && e.target.getAttribute('id') == 'expandir_gifo')
+                modalDesktop(objetivo)
         })
 
         searchInput.innerText = "";
@@ -159,15 +156,16 @@ const fetchSearch = (arr, flagViemore = false) => {
 }
 
 searchInput?.addEventListener('keyup', autocomplete);
-search?.addEventListener('click', searchContent);
 
-document.addEventListener('keydown', (e) => {
+
+document.addEventListener('keypress', async (e) => {
     if (e.key == "Enter") {
-
-        search.click();
+        searchContent()
     }
 })
-document.querySelector('#iconono_buscador').addEventListener('click', (e) => {
+document.querySelector('#iconono_buscador').addEventListener('click', async (e) => {
     e.preventDefault()
-    search.click()
+    searchContent()
 })
+
+searchResults?.addEventListener('click', downloadGif);

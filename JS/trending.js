@@ -12,6 +12,20 @@ let x = document.querySelector(".close");
 let optionsText = document.querySelector("#options");
 
 let l = 0;
+let getRendersImagen = () => {
+    let cards = document.querySelector('#resultados_busqueda')
+    let imagenesBuscadas = []
+    for (let i = 0; i < cards.childElementCount; i++) {
+        imagenesBuscadas.push(
+
+            {
+                datatitle: cards.children[i].children[0].getAttribute('data-title'),
+                src: cards.children[i].children[0].getAttribute('src')
+
+            })
+    }
+    return imagenesBuscadas
+}
 
 const loadTrendings = async () => {
     try {
@@ -109,7 +123,9 @@ let closeModal = () => {
 let maximizeGif = (element) => {
 
     if (element.target.classList.contains('guardar_favorito_corazon')) {
+        if (deleteFromFavs(element)) return
         addFav(element)
+
         if (document.title == 'FAVORITOS') renderFavs()
 
     }
@@ -119,10 +135,16 @@ let maximizeGif = (element) => {
 
 }
 let addFav = (e) => {
-    let Src = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+    let Src = ''
+    if (document.title == 'GIFOS HOME') {
+        Src = e   //VER POR QUE EL ADDFAV DE TRENDING NO ESTA FUNCIONANDO
+    } else {
+        Src = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+
+    }
     let localStorageGifs = JSON.parse(localStorage.getItem('favoritos'));
     let Auxiliar = localStorageGifs ? localStorageGifs : []
-    let verificacion = Auxiliar.filter(x => x == Src.src)
+    let verificacion = Auxiliar.filter(x => x.datatitle == Src.getAttribute('data-title'))
     if (verificacion.length == 0) {
         let favorito = {
             datatitle: Src.getAttribute('data-title'),
@@ -139,17 +161,29 @@ let addFav = (e) => {
 
 let downloadGif = (evento) => {
     let btnDownload = evento.target.parentElement.parentElement.parentElement.parentElement.children[0].getAttribute('data-title');
-    console.log(btnDownload);
+    console.log('entramos aca',btnDownload);
+    if (evento.target.classList.contains('descarga')) return
+    if (evento.target.classList.contains('searchDownload')) {
+        downloadSearch(evento, btnDownload)
+        return
+    }
+
+
     if (evento.target.classList.contains('descargar_gifo_escritorio')) {
+        console.log(btnDownload);
+        arrayDescarga.map(x => console.log(x.title))
         arrayDescarga.map(async (gif) => {
             if (gif.title == btnDownload) {
+                console.log(gif);
                 await fetch(gif.images.downsized.url)
                     .then((img) => {
                         img.blob().then((file) => {
                             let a = document.createElement("a");
+                            a.classList.add('descarga')
                             a.href = URL.createObjectURL(file);
                             a.download = gif.title;
-                            a.click();
+                            a.click()
+
                         });
                     });
             }
@@ -158,6 +192,31 @@ let downloadGif = (evento) => {
 
     }
 }
+
+let downloadSearch = (evento, btnDownload) => {
+    console.log('entramos');
+    if (evento.target.classList.contains('descargar_gifo_escritorio')) {
+        getRendersImagen().map(async (item) => {
+            if (item.datatitle == btnDownload) {
+                await fetch(item.src)
+                    .then((img) => {
+                        img.blob().then((file) => {
+                            let a = document.createElement("a");
+                            a.classList.add('descarga')
+                            a.href = URL.createObjectURL(file);
+                            a.download = item.datatitle;
+                            a.click()
+
+                        });
+                    });
+            }
+
+        })
+    }
+}
+
+
+
 let modalDesktop = (e) => {
     containerModal.style.display = "block";
     let target = e.src ? e.src : e.target.src;
@@ -168,7 +227,7 @@ let modalDesktop = (e) => {
 
 let renderFavs = (x) => {
     let localStorageGifsArray = [];
-   document.querySelector('#imagenes_favoritos').innerHTML = ''
+    document.querySelector('#imagenes_favoritos').innerHTML = ''
     let localStorageGifs = localStorage.getItem('favoritos');
     if (localStorageGifs != null) {
         localStorageGifsArray = JSON.parse(localStorageGifs);
@@ -181,7 +240,6 @@ let renderFavs = (x) => {
         images.classList.add('trending');
         images.setAttribute('data-title', x.datatitle);
         images.setAttribute('data-username', x.userName);
-        images.classList.add('sacarFavoritos');
         images.setAttribute('id', 'gif');
         images.style.height = "100%";
         images.style.width = "100%";
@@ -200,7 +258,7 @@ let renderFavs = (x) => {
         mouseOverCard.innerHTML = `
             <div class="opciones_mouse_over">
                         <div class="borde_opciones_mause_over llegar_al_corazon">
-                            <img class = guardar_favorito_corazon src="./assets/icon-fav-hover.svg" alt="">
+                            <img class = 'guardar_favorito_corazon sacarFavoritos' src="./assets/icon-fav-hover.svg" alt="">
                         </div>
                         <div class="borde_opciones_mause_over click_descarga_gifo">
                             <img class = "descargar_gifo_escritorio" id = "descargar_escritorio" src="./assets/icon-download.svg" alt="">
@@ -217,21 +275,21 @@ let renderFavs = (x) => {
         containerGifosHover.appendChild(mouseOverCard);
         document.querySelector('#imagenes_favoritos').appendChild(containerGifosHover);
     })
-    document.querySelector('#imagenes_favoritos').addEventListener('click', (e) => {
+    // document.querySelector('#imagenes_favoritos').addEventListener('click', (e) => {
 
-        let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
-        console.log(e.target);  
-        if (e.target.classList.contains('guardar_favorito_corazon'))
-              deleteFromFavs(objetivo)
-          if (e.target.classList.contains('descargar_gifo_escritorio'))
-              downloadGif(e)
-          if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
-              modalDesktop(objetivo)
-    })
+    //     let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+
+    //     if (e.target.classList.contains('guardar_favorito_corazon'))
+    //           deleteFromFavs(objetivo)
+    //       if (e.target.classList.contains('descargar_gifo_escritorio'))
+    //           downloadGif(e)
+    //       if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
+    //           modalDesktop(objetivo)
+    // })
 }
 
-let renderMisGifos =()=>{
-   
+let renderMisGifos = () => {
+
     const misGifos = JSON.parse(localStorage.getItem("misGifos"));
     const urls = misGifos.map((id) => `https://i.giphy.com/${id}.gif`);
     localStorageGifsArray = urls.map((url) => {
@@ -245,7 +303,7 @@ let renderMisGifos =()=>{
         images.style.height = "100%";
         images.style.width = "100%";
         images.style.boxSizing = "border-box";
-    
+
         let containerGifosHover = document.createElement("div");
         containerGifosHover.style.display = "flex";
         containerGifosHover.style.justifyContent = "space-around";
@@ -272,19 +330,19 @@ let renderMisGifos =()=>{
                      `;
         containerGifosHover.appendChild(mouseOverCard);
         document.querySelector("#gifsCreados").appendChild(containerGifosHover);
-    
+
         document.querySelector('#gifsCreados').addEventListener('click', (e) => {
-    
-          let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
-          console.log(e.target);  
-          if (e.target.classList.contains('guardar_favorito_corazon'))
+
+            let objetivo = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+
+            if (e.target.classList.contains('guardar_favorito_corazon'))
                 deleteFromMisGifos(objetivo)
             if (e.target.classList.contains('descargar_gifo_escritorio'))
                 downloadCreatedGif(e)
-            if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
+            if (e.target.getAttribute('id') && e.target.getAttribute('id') == 'expandir_gifo')
                 modalDesktop(objetivo)
-      })
-      });
+        })
+    });
 }
 let main = () => {
     if (document.title == 'FAVORITOS') {
@@ -302,22 +360,27 @@ let main = () => {
 
 
 let deleteFromFavs = (e) => {
+    let dataTitle = e.target.parentElement.parentElement.parentElement.parentElement.children[0].getAttribute('data-title');
     if (typeof e != "undefined") {
-        if (e.classList.contains('sacarFavoritos')) {
+        if (e.target.classList.contains('sacarFavoritos')) {
             let localStorageGifs = JSON.parse(localStorage.getItem('favoritos'));
             let Auxiliar = localStorageGifs ? localStorageGifs : []
-            let verificacion = Auxiliar.filter(item => item.src != e.src)
+            let verificacion = Auxiliar.filter(item => item.datatitle != dataTitle)
             localStorage.setItem('favoritos', JSON.stringify(verificacion));
             renderFavs()
+            return true
         }
 
     }
+    return false
 }
 
 
 
 containerCarrousel?.addEventListener('click', downloadGif);
 containerCarrousel?.addEventListener('click', maximizeGif);
+document.querySelector('#imagenes_favoritos')?.addEventListener('click', downloadGif);
+document.querySelector('#imagenes_favoritos')?.addEventListener('click', maximizeGif);
 arrowRigth?.addEventListener('click', slideRight)
 arrowLeft?.addEventListener('click', slideLeft)
 x?.addEventListener('click', closeModal)
