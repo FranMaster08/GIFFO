@@ -90,6 +90,9 @@
         }
     }
     .seccion2{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
         h3{
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
@@ -125,6 +128,22 @@
               ". ."
               ". ."
               ". .";
+
+              .contenedor_gifos_hover{
+                width: 156px;
+                height:120px;
+
+                .searchImg{
+                    width: 156px;
+                    height:120px;
+                }
+                .mouse_over_tarjeta2 {
+                    display: none;
+                }
+              }
+          }
+          .mouse_over_tarjeta2 {
+              display: none;
           }
         .boton_ver_mas{
             display: flex;
@@ -180,14 +199,23 @@
                 display: flex;
                 overflow:scroll;
                 scroll-snap-type: x mandatory;
+                justify-content: space-between;
+
+                .contenedor_gifos_hover{
+                    width: 243px;
+                    height: 187px;
+                    position: relative;
+
+                    .trending{
+                        width: 243px;
+                        height: 187px;
+                        // padding-right: 20px;
+                    }
+                }
                 
             }
         
-            img{
-                width: 243px;
-                height: 187px;
-                padding-right: 20px;
-            }
+            
 
             .rigth_arrow{
                 display: none;
@@ -198,13 +226,12 @@
         }
         .mouse_over_tarjeta2{
             visibility: hidden;
+            width: 0;
+            height: 0;
         }
         
     }
-    .contenedor_gifos_hover{
-        height: 187px;
-        width: 243px;
-    }
+   
 
 
     .linea_azul_footer{
@@ -316,6 +343,9 @@
 
     .seccion2{
         margin-top: 73px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
        .trending_title{
           
             font-family: 'Montserrat', sans-serif;
@@ -352,6 +382,7 @@
             margin-top: 20vh;
             align-items: center;
             justify-content: center;
+            width: 90%;
 
             h3{
                 height: 25px;
@@ -363,14 +394,9 @@
                  grid-row-start: 2;
                  grid-row-end: 2;
              }
-              .image{
-                box-sizing: border-box;
-                width: fit-content;
-                height: fit-content;
-                  .imagenGif{
-                    width: 260px;
-                    height: 200px;
-                  }
+              .searchImg{
+                  height: 200px;
+                  width: 260px;
               }
           }
         .boton_ver_mas{
@@ -378,6 +404,7 @@
             visibility: hidden;
             align-items: center;
             justify-content: center;
+            margin-top: 20px;
         &:hover{
             background-image:url(/assets/CTA-ver-mas-hover.svg) ;
            background-position: center;
@@ -427,13 +454,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            .trending{
+            .contenedor_gifos_hover{
+                position: relative;
+                transition: 0.5s;
                 width: 357px;
                 height: 275px;
-                margin: 0px 25px;
-
+                margin-right:10px;
+                .trending{
+                    width: 357px;
+                    height: 275px;
+                    align-self: center;
+                }
+                
             }
+           
 
             .left_arrow{
                 border: 1px solid #572EE5;
@@ -474,6 +508,10 @@
     .contenedor_gifos_hover{
         position: relative;
         transition: 0.5s;
+        width: 260px;
+        height: 200px;
+
+        
     }
 
     .mouse_over_tarjeta2{
@@ -481,9 +519,10 @@
         background-color: #572EE5;
         position: absolute;
         top: 0px;
-        width: 357px;
-        height: 275px;
-        right: 25px;
+        width: fit-content;
+        height: fit-content;
+        right: 0px;
+        // align-self: center;
         &:hover{
             opacity: 0.7;
         }
@@ -493,11 +532,13 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 16px;
             text-align: center;
+            width: 200px;
         }
         .gifo_usuario_hover{
             font-size: 15px;
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             font-family:'Roboto', sans-serif; 
+            width: 200px !important;
         }
         
 

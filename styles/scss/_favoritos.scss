@@ -34,6 +34,10 @@
     grid-column-gap: 21px;
     grid-row-gap: 25px;
     justify-content: center;
+
+    .mouse_over_tarjeta2 {
+display: none;
+    }
 }
 .boton_ver_mas{
     border: 1px solid #572EE5;

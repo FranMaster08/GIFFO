@@ -8,7 +8,7 @@ let seccion2 = document.querySelector('.seccion2');
 
 const getSearchTags = async (word) => {
     try {
-        const suggestions = await fetch(`https://api.giphy.com/v1/gifs/search/tags?api_key=j4As5HO2OpUG2w2gTuuqQnIGuwOu2nnJ&limit=4&q=${word}`);
+        const suggestions = await fetch(`https://api.giphy.com/v1/gifs/search/tags?api_key=wUIs2kykDiUjqc9ljNRoH97ddpN05IwD&limit=4&q=${word}`);
         return suggestions.json();
     } catch (error) {
         console.log("ocurrio un error", error)
@@ -17,7 +17,7 @@ const getSearchTags = async (word) => {
 
 const getGifosSearch = async (Paginacion, query) => {
     try {
-        const imagenes = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=j4As5HO2OpUG2w2gTuuqQnIGuwOu2nnJ&limit=12&offset=${Paginacion}&q=${query}`);
+        const imagenes = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=wUIs2kykDiUjqc9ljNRoH97ddpN05IwD&limit=12&offset=${Paginacion}&q=${query}`);
         return imagenes.json()
     } catch (error) {
         console.log("ocurrio un error", error)
@@ -83,29 +83,27 @@ const fetchSearch = (arr, flagViemore = false) => {
         h2SearchResults.innerText = searchInput.value
         if (!flagViemore)
             searchResults.innerHTML = ""
-        //searchResults.prepend(h2SearchResults);
-        // h2SearchResults.style.display='block';
         const containerGifos = document.querySelector('#resultados_busqueda')
 
 
         arr.data.forEach(x => {
             gifosFound.push(x);
             let images = document.createElement("img");
-            images.setAttribute("src", x.images.fixed_height.url);
-            images.classList.add("trending");
+            images.setAttribute("src", x.images.downsized.url);
+            images.classList.add("searchImg");
             images.setAttribute('data-title', x.title);
             images.setAttribute('data-username', x.username);
             images.classList.add("sacarFavoritos");
             images.setAttribute("id", "gif");
-            images.style.height = "100%";
-            images.style.width = "100%";
+            // images.style.height = "100%";
+            // images.style.width = "100%";
             images.style.boxSizing = "border-box";
 
             let containerGifosHover = document.createElement("div");
             containerGifosHover.style.display = "flex";
             containerGifosHover.style.justifyContent = "space-around";
-            containerGifosHover.style.height = "200px";
-            containerGifosHover.style.width = "260px";
+            // containerGifosHover.style.height = "200px";
+            // containerGifosHover.style.width = "260px";
             containerGifosHover.setAttribute("class", "contenedor_gifos_hover");
             containerGifosHover.appendChild(images);
             let mouseOverCard = document.createElement("div");
@@ -131,6 +129,7 @@ const fetchSearch = (arr, flagViemore = false) => {
             </div>`;;
             containerGifosHover.appendChild(mouseOverCard);
             containerGifos.appendChild(containerGifosHover);
+            images.addEventListener("click", modal);
 
 
         })

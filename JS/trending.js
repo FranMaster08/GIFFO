@@ -5,14 +5,14 @@ const slick = document.getElementsByClassName("contenedor_gifos_hover");
 let containerCarrousel = document.querySelector('#contenedor_carrusel');
 let getApi = document.querySelector('.list_gifos');
 let leftArrow = document.querySelector('.left_arrow');
-let gifoUrl = "https://api.giphy.com/v1/gifs/trending?api_key=LcybAN2NSdMZKawiiuEU0m7lgBTrf52c&limit=12&offset=5&rating=g&random_id=e826c9fc5c929e0d6c6d423841a282aa";
+let gifoUrl = "https://api.giphy.com/v1/gifs/trending?api_key=wUIs2kykDiUjqc9ljNRoH97ddpN05IwD&limit=12&offset=5&rating=g&random_id=e826c9fc5c929e0d6c6d423841a282aa";
 let containerModal = document.querySelector("#myModal");
 let modalImg = document.querySelector("#img01");
 let x = document.querySelector(".close");
 let optionsText = document.querySelector("#options");
 
 let l = 0;
-let getRendersImagen = () => {
+let getRenderedImage = () => {
     let cards = document.querySelector('#resultados_busqueda')
     let imagenesBuscadas = []
     for (let i = 0; i < cards.childElementCount; i++) {
@@ -53,16 +53,26 @@ const renderTrendings = async () => {
 }
 const createCardTrending = (cardData) => {
     let images = document.createElement('img');
-    images.setAttribute('src', cardData.images.downsized.url);
+    images.setAttribute('src', cardData.images.fixed_height.url);
     images.setAttribute('id', 'gif');
     images.setAttribute('data-title', cardData.title);
     images.setAttribute('data-username', cardData.username);
     images.classList.add('trending');
+    // images.style.height = "275px";
+    // images.style.width = "357px";
     let containerGifosHover = document.createElement('div');
     containerGifosHover.setAttribute('class', 'contenedor_gifos_hover');
     containerGifosHover.appendChild(images);
+    // containerGifosHover.style.width='357px';
+    // containerGifosHover.style.height='275px';
+    containerGifosHover.style.margin='0 15px 0';
+    containerGifosHover.style.display = "flex";
+    containerGifosHover.style.justifyContent = "center";
     let mouseOverCard = document.createElement('div');
     mouseOverCard.setAttribute('class', 'mouse_over_tarjeta2');
+     mouseOverCard.style.height = "100%";
+     mouseOverCard.style.width = "100%";
+    mouseOverCard.style.right = "0";
     mouseOverCard.innerHTML = `
         <div class="opciones_mouse_over">
                     <div class="borde_opciones_mause_over llegar_al_corazon">
@@ -83,14 +93,32 @@ const createCardTrending = (cardData) => {
     containerCarrousel.appendChild(containerGifosHover);
     getApi.insertBefore(containerCarrousel, arrowRigth);
     images.addEventListener("click", modal);
+    let imgModalExpand = document.querySelector('.modal-content');
+    imgModalExpand.setAttribute('data-title', cardData.title);
+    imgModalExpand.setAttribute('data-username', cardData.username);
+    let downloadGifModal = document.querySelector('.btn_descarga_mobile_2');
+    downloadGifModal.classList.add('descargar_gifo_escritorio')
+    // containerModal?.addEventListener('click', downloadGif());
+    containerModal.addEventListener('click', (e) => {
+
+        let objetivo = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
+
+        if (e.target.classList.contains('guardar_favorito_corazon'))
+            addFav(objetivo)
+        if (e.target.classList.contains('descargar_gifo_escritorio'))
+            downloadGif(objetivo)
+    })
+
 }
 const modal = (e) => {
     containerModal.style.display = "block";
     let target = e.src ? e.src : e.target.src;
     modalImg.setAttribute('src', target);
     optionsText.style.display = "flex";
-    document.querySelector('#titulo_gifo').innerText = e.target.dataset.title;
-    document.querySelector('#gifo_usuario').innerText = e.target.dataset.username;
+    let expandTitle = document.querySelector('#titulo_gifo');
+    let expandUser = document.querySelector('#gifo_usuario');
+     expandTitle.innerText = e.target.dataset.title;
+     expandUser.innerText = e.target.dataset.username;
 }
 let slideRight = () => {
     l++
@@ -137,7 +165,7 @@ let maximizeGif = (element) => {
 let addFav = (e) => {
     let Src = ''
     if (document.title == 'GIFOS HOME') {
-        Src = e   //VER POR QUE EL ADDFAV DE TRENDING NO ESTA FUNCIONANDO
+        Src = e.target.parentElement.parentElement.parentElement.parentElement.children[0]   //VER POR QUE EL ADDFAV DE TRENDING NO ESTA FUNCIONANDO
     } else {
         Src = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
 
@@ -175,7 +203,7 @@ let downloadGif = (evento) => {
         arrayDescarga.map(async (gif) => {
             if (gif.title == btnDownload) {
                 console.log(gif);
-                await fetch(gif.images.downsized.url)
+                await fetch(gif.images.fixed_height.url)
                     .then((img) => {
                         img.blob().then((file) => {
                             let a = document.createElement("a");
@@ -196,7 +224,7 @@ let downloadGif = (evento) => {
 let downloadSearch = (evento, btnDownload) => {
     console.log('entramos');
     if (evento.target.classList.contains('descargar_gifo_escritorio')) {
-        getRendersImagen().map(async (item) => {
+        getRenderedImage().map(async (item) => {
             if (item.datatitle == btnDownload) {
                 await fetch(item.src)
                     .then((img) => {
@@ -274,18 +302,9 @@ let renderFavs = (x) => {
                  `;
         containerGifosHover.appendChild(mouseOverCard);
         document.querySelector('#imagenes_favoritos').appendChild(containerGifosHover);
+        images.addEventListener("click", modal);
     })
-    // document.querySelector('#imagenes_favoritos').addEventListener('click', (e) => {
-
-    //     let objetivo=e.target.parentElement.parentElement.parentElement.parentElement.children[0]
-
-    //     if (e.target.classList.contains('guardar_favorito_corazon'))
-    //           deleteFromFavs(objetivo)
-    //       if (e.target.classList.contains('descargar_gifo_escritorio'))
-    //           downloadGif(e)
-    //       if (e.target.getAttribute('id') && e.target.getAttribute('id')=='expandir_gifo')
-    //           modalDesktop(objetivo)
-    // })
+    
 }
 
 let renderMisGifos = () => {
@@ -384,5 +403,6 @@ document.querySelector('#imagenes_favoritos')?.addEventListener('click', maximiz
 arrowRigth?.addEventListener('click', slideRight)
 arrowLeft?.addEventListener('click', slideLeft)
 x?.addEventListener('click', closeModal)
+
 
 main()

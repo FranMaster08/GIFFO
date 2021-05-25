@@ -213,48 +213,69 @@
         font-family: "Roboto", sans-serif;
         margin-left: 23px; }
 
-  .seccion2 h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    color: #572EE5;
-    text-align: center;
-    line-height: 25px;
-    font-weight: bolder;
-    margin-top: 30px; }
-  .seccion2 p {
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    color: #572EE5;
-    text-align: center;
-    margin: 2px 56px; }
-  .seccion2 #titulo_busqueda {
-    text-align: center;
-    margin: 43px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 25px;
-    color: #572EE5; }
-  .seccion2 #resultados_busqueda {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 15px 20px;
-    grid-template-areas: ". ." ". ." ". ." ". ." ". ." ". ."; }
-  .seccion2 .boton_ver_mas {
+  .seccion2 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    visibility: hidden;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center; }
-    .seccion2 .boton_ver_mas:hover {
-      background-image: url(/assets/CTA-ver-mas-hover.svg);
-      background-position: center; }
-    .seccion2 .boton_ver_mas #mirar_mas {
-      font-weight: bold; }
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .seccion2 h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      color: #572EE5;
+      text-align: center;
+      line-height: 25px;
+      font-weight: bolder;
+      margin-top: 30px; }
+    .seccion2 p {
+      font-size: 16px;
+      font-family: 'Montserrat', sans-serif;
+      color: #572EE5;
+      text-align: center;
+      margin: 2px 56px; }
+    .seccion2 #titulo_busqueda {
+      text-align: center;
+      margin: 43px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 25px;
+      color: #572EE5; }
+    .seccion2 #resultados_busqueda {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      gap: 15px 20px;
+      grid-template-areas: ". ." ". ." ". ." ". ." ". ." ". ."; }
+      .seccion2 #resultados_busqueda .contenedor_gifos_hover {
+        width: 156px;
+        height: 120px; }
+        .seccion2 #resultados_busqueda .contenedor_gifos_hover .searchImg {
+          width: 156px;
+          height: 120px; }
+        .seccion2 #resultados_busqueda .contenedor_gifos_hover .mouse_over_tarjeta2 {
+          display: none; }
+    .seccion2 .mouse_over_tarjeta2 {
+      display: none; }
+    .seccion2 .boton_ver_mas {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      visibility: hidden;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      .seccion2 .boton_ver_mas:hover {
+        background-image: url(/assets/CTA-ver-mas-hover.svg);
+        background-position: center; }
+      .seccion2 .boton_ver_mas #mirar_mas {
+        font-weight: bold; }
 
   .seccion3 {
     -webkit-box-orient: vertical;
@@ -302,11 +323,17 @@
         overflow: scroll;
         -webkit-scroll-snap-type: x mandatory;
             -ms-scroll-snap-type: x mandatory;
-                scroll-snap-type: x mandatory; }
-      .seccion3 .list_gifos img {
-        width: 243px;
-        height: 187px;
-        padding-right: 20px; }
+                scroll-snap-type: x mandatory;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between; }
+        .seccion3 .list_gifos .contenedor_carrusel .contenedor_gifos_hover {
+          width: 243px;
+          height: 187px;
+          position: relative; }
+          .seccion3 .list_gifos .contenedor_carrusel .contenedor_gifos_hover .trending {
+            width: 243px;
+            height: 187px; }
       .seccion3 .list_gifos .rigth_arrow {
         display: none;
         -webkit-box-pack: center;
@@ -315,11 +342,9 @@
         width: 40px;
         height: 40px; }
     .seccion3 .mouse_over_tarjeta2 {
-      visibility: hidden; }
-
-  .contenedor_gifos_hover {
-    height: 187px;
-    width: 243px; }
+      visibility: hidden;
+      width: 0;
+      height: 0; }
 
   .linea_azul_footer {
     width: 100%;
@@ -410,7 +435,17 @@
         margin-left: 23px; }
 
   .seccion2 {
-    margin-top: 73px; }
+    margin-top: 73px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
     .seccion2 .trending_title {
       font-family: 'Montserrat', sans-serif;
       font-size: 18px;
@@ -444,7 +479,8 @@
               align-items: center;
       -webkit-box-pack: center;
           -ms-flex-pack: center;
-              justify-content: center; }
+              justify-content: center;
+      width: 90%; }
       .seccion2 #resultados_busqueda h3 {
         height: 25px;
         width: 300px;
@@ -454,18 +490,9 @@
         grid-column-end: 2;
         grid-row-start: 2;
         grid-row-end: 2; }
-      .seccion2 #resultados_busqueda .image {
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-        width: -webkit-fit-content;
-        width: -moz-fit-content;
-        width: fit-content;
-        height: -webkit-fit-content;
-        height: -moz-fit-content;
-        height: fit-content; }
-        .seccion2 #resultados_busqueda .image .imagenGif {
-          width: 260px;
-          height: 200px; }
+      .seccion2 #resultados_busqueda .searchImg {
+        height: 200px;
+        width: 260px; }
     .seccion2 .boton_ver_mas {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -476,7 +503,8 @@
               align-items: center;
       -webkit-box-pack: center;
           -ms-flex-pack: center;
-              justify-content: center; }
+              justify-content: center;
+      margin-top: 20px; }
       .seccion2 .boton_ver_mas:hover {
         background-image: url(/assets/CTA-ver-mas-hover.svg);
         background-position: center; }
@@ -520,10 +548,18 @@
       -webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center; }
-      .seccion3 .list_gifos .trending {
+      .seccion3 .list_gifos .contenedor_gifos_hover {
+        position: relative;
+        -webkit-transition: 0.5s;
+        transition: 0.5s;
         width: 357px;
         height: 275px;
-        margin: 0px 25px; }
+        margin-right: 10px; }
+        .seccion3 .list_gifos .contenedor_gifos_hover .trending {
+          width: 357px;
+          height: 275px;
+          -ms-flex-item-align: center;
+              align-self: center; }
       .seccion3 .list_gifos .left_arrow {
         border: 1px solid #572EE5;
         height: 40px;
@@ -566,27 +602,35 @@
   .contenedor_gifos_hover {
     position: relative;
     -webkit-transition: 0.5s;
-    transition: 0.5s; }
+    transition: 0.5s;
+    width: 260px;
+    height: 200px; }
 
   .mouse_over_tarjeta2 {
     opacity: 0;
     background-color: #572EE5;
     position: absolute;
     top: 0px;
-    width: 357px;
-    height: 275px;
-    right: 25px; }
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    right: 0px; }
     .mouse_over_tarjeta2:hover {
       opacity: 0.7; }
     .mouse_over_tarjeta2 .titulo_gifo_hover {
       color: #FFFFFF;
       font-family: 'Montserrat', sans-serif;
       font-size: 16px;
-      text-align: center; }
+      text-align: center;
+      width: 200px; }
     .mouse_over_tarjeta2 .gifo_usuario_hover {
       font-size: 15px;
-      color: #FFFFFF;
-      font-family: 'Roboto', sans-serif; }
+      color: #FFFFFF !important;
+      font-family: 'Roboto', sans-serif;
+      width: 200px !important; }
     .mouse_over_tarjeta2 .borde_opciones_mause_over {
       opacity: 0.6;
       background: #FFFFFF;
@@ -992,6 +1036,8 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center; }
+    .contenedor_imagenes_favoritos .mouse_over_tarjeta2 {
+      display: none; }
 
   .boton_ver_mas {
     border: 1px solid #572EE5;
