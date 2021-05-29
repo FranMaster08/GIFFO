@@ -1,12 +1,13 @@
 let AbrirModal = (e) => {
     let target =e.parentElement.parentElement.parentElement.parentElement.children[0]
     containerModal.children[3].children[0].value=  e.parentElement.parentElement.parentElement.children[2].children[0].value
-  
-
     containerModal.style.display = "block";
+   
     let userName = target.getAttribute('data-username')
     let datatitle = target.getAttribute('data-title')
+    
     console.log('Datos',userName,datatitle);
+    
     modalImg.setAttribute('src', target.src);
     modalImg.setAttribute('data-title', datatitle);
     modalImg.setAttribute('data-username', userName);

@@ -32,6 +32,8 @@ const renderTrendings = async () => {
             arrayDescarga.map(x => x.url = x.images.fixed_height.url)
             trendings.data.map(x => CreateCard(x, ['trending'], containerCarrousel,
                 (x) => {
+                    
+                    x.parentElement.children[0].onclick=(e)=>AbrirModal(e.target.parentElement.children[1].children[0].children[2].children[0]);
                     x.children[0].children[2].onclick=(e)=>AbrirModal(e.target);
                     x.children[0].children[1].onclick = (e) => downloadGif(e.target.parentElement.parentElement.parentElement.parentElement.children[0],getCriterio(TREND))
                     x.children[0].children[0].onclick = (e) => addFav(e.target,TREND)
