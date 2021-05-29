@@ -22,8 +22,13 @@ const DowloadModalImg=(e)=>{
 }
 
 const ModalFavoritos=(e)=>{
- 
-    let target =e.target.parentElement.parentElement.parentElement.parentElement.children[1]
+    let target = ''
+    if (document.title == 'GIFOS HOME'){
+        target =e.target.parentElement.parentElement.parentElement.children[1]
+    }else{
+        target =e.target.parentElement.parentElement.parentElement.parentElement.children[1]
+    }
+   
     console.log(target);
     let localStorageGifs = localStorage.getItem('favoritos');
     let Auxiliar=[]
