@@ -16,7 +16,13 @@ subir.addEventListener('click', function (ev) {
 
    const actualPreviewId = document.querySelector('.preview').getAttribute('data-id')
    const misGifos = JSON.parse(localStorage.getItem('misGifos')) || [];
-   misGifos.push(actualPreviewId);
+   misGifos.push({
+      id: actualPreviewId,
+      url: `https://i.giphy.com/${actualPreviewId}.gif`,
+      title: actualPreviewId,
+      username: actualPreviewId
+     }
+   );
    localStorage.setItem('misGifos',JSON.stringify(misGifos));
 })
 

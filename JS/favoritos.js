@@ -1,5 +1,5 @@
 
-const addFav = (e) => {
+const addFav = (e,criterioDescargas) => {
     let Src = ''
     let target = e.parentElement.parentElement.parentElement.parentElement.children[0]
     Src = typeof target == 'undefined' ? e : target
@@ -11,11 +11,12 @@ const addFav = (e) => {
        let favorito={
            url:target.src,
            title:target.getAttribute('data-title'),
-           username:target.getAttribute('data-username')
+           username:target.getAttribute('data-username'),
+           criterioDescargas
        }
         Auxiliar.push(favorito)
         localStorage.setItem('favoritos', JSON.stringify(Auxiliar));
-       
+        renderFavs()
     }
     else
         console.log('Ya existe en favoritos');
@@ -23,6 +24,7 @@ const addFav = (e) => {
 }
 
 const renderFavs = () => {
+    if(!verificarPantalla('FAVORITOS'))return
     let localStorageGifsArray = [];
     let ImagenesFavoritos=document.querySelector('#imagenes_favoritos')
     ImagenesFavoritos.innerHTML = ''
@@ -31,10 +33,16 @@ const renderFavs = () => {
         localStorageGifsArray = JSON.parse(localStorageGifs);
         document.querySelector('#conte_favoritos2').style.display = 'none'
     }
-    localStorageGifsArray.map(x => CreateCard(x, ['imgFav'], ImagenesFavoritos,
-         (x) => 
-                x.children[0].children[0].onclick = (e)=>deleteFromFavs(e.target)
-            ))
+    localStorageGifsArray.map
+    (x => CreateCard(x, ['imgFav'], ImagenesFavoritos,(x) => {
+            let Criterio=x.children[2].children[0].value
+             x.children[0].children[2].onclick=(e)=>AbrirModal(e.target);
+             x.children[0].children[0].onclick = (e)=>deleteFromFavs(e.target)
+             x.children[0].children[1].onclick = (e) => downloadGif(e.target.parentElement.parentElement.parentElement.parentElement.children[0],getCriterio(Criterio))
+
+
+         }
+           ,x.criterioDescargas ))
 
    
 }

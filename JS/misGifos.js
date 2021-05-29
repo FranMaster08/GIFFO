@@ -1,68 +1,32 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  let localStorageGifsArray = [];
+
   document.querySelector("#gifsCreados").innerHTML = "";
   let localStorageGifs = localStorage.getItem("misGifos");
-  if (localStorageGifs != null) {
-    localStorageGifsArray = JSON.parse(localStorageGifs);
+  if (localStorageGifs != null) 
     document.querySelector("#conte_crear_gifo2").style.display = "none";
-  }
-
+  
  renderMisGifos();
 
-  localStorageGifsArray.forEach((gif) => {
-    document.querySelector(".contenedor_imagenes_favoritos").appendChild(gif);
-
-    
-  });
+  
 });
 
-// let deleteFromMisGifos = (e) => {
-//   if (typeof e != "undefined") {
-//       if (e.classList.contains('sacarFavoritos')) {
-//           let localStorageGifs = JSON.parse(localStorage.getItem('misGifos'));
-//           let Auxiliar = localStorageGifs ? localStorageGifs : []
-//           let verificacion = Auxiliar.filter(item => item.src != e.src)
-//           localStorage.setItem('misGifos', JSON.stringify(verificacion));
-//           renderMisGifos()
-//       }
-
-//   }
-// }
-
-// let downloadCreatedGif = (evento) => {
-//   console.log('entrando');
-//   let btnDownload = evento.target.parentElement.parentElement.parentElement.parentElement.children[0].getAttribute('src');
-//   console.log(btnDownload);
-//   if (evento.target.classList.contains('descargar_gifo_escritorio')) {
-//       arrayDescarga.map(async (gif) => {
-//           if (gif.source == btnDownload) {
-//               await fetch(gif.images.downsized.url)
-//                   .then((img) => {
-//                       img.blob().then((file) => {
-//                           let a = document.createElement("a");
-//                           a.href = URL.createObjectURL(file);
-//                           a.download = gif.source;
-//                           a.click();
-//                       });
-//                   });
-//           }
-
-//       })
-
-//   }
-// }
 
 let renderMisGifos = () => {
 
   const misGifos = JSON.parse(localStorage.getItem("misGifos"));
-  const urls = misGifos.map((id) => `https://i.giphy.com/${id}.gif`);
-  localStorageGifsArray = urls.map((url) => {
-    let urlGif= {
-      url:url
-    }
-      CreateCard(urlGif,['imgFav'],document.querySelector("#gifsCreados"),(x)=>{x.parentElement.children[1].children[1].innerHTML=''})
+  if(!misGifos)return
+  misGifos.map((item) => {
+      CreateCard(item,['imgFav'],document.querySelector("#gifsCreados"),(x)=>{
+           x.parentElement.children[1].children[1].innerHTML=''
+           x.children[0].children[2].onclick=(e)=>AbrirModal(e.target);
+           x.children[0].children[1].onclick = (e) => downloadGif(e.target.parentElement.parentElement.parentElement.parentElement.children[0],getCriterio(GIFFO))
+          
+           x.children[0].children[0].onclick = (e) => addFav(e.target,GIFFO)
 
-      
+          },GIFFO)
+
   });
 }
 

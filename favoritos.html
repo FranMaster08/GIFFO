@@ -103,6 +103,7 @@
           </div>
         </div>
       </section>
+
       <div id="myModal" class="modal">
 
         <span class="close">&times;</span>
@@ -122,9 +123,9 @@
 
             <div class="iconos_favoritos_descargar">
 
-                <span id="corazon2" class="corazon">
-                    <img src="./assets/icon-fav-active.svg" id="ModalFav" alt="">
-                </span>
+            
+                <img class='guardar_favorito_corazon modalfav' id="ModalFav" src="./assets/icon-fav-active.svg" alt="">
+            
 
                 <button class="borde_boton_descarga">
                     <img class="btn_descarga_mobile_2" id="btn_descarga_mobile" src="./assets/icon-download.svg"
@@ -132,10 +133,17 @@
                 </button>
 
             </div>
-
+            <input type="text" id="flagMobile"
+            hidden value="false">
+        </div>
+        <div>
+            <input type="text" hidden >
         </div>
 
     </div>
+
+
+
     </main>
 
     <!-- main finish here -->

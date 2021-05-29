@@ -98,6 +98,7 @@ const fetchSearch = (arr, flagViemore = false) => {
         datos.forEach(x => {
             gifosFound.push(x);
             CreateCard(x, ['searchImg'], containerGifos, (e) => {
+                e.children[0].children[2].onclick=(y)=>AbrirModal(y.target);
                 e.children[0].children[1].onclick = (y) => downloadGif(y.target.parentElement.parentElement.parentElement.parentElement.children[0],getRenderedImage())
                 e.children[0].children[0].onclick = (y) => addFav(y.target)
                 containerList.innerHTML = "";
