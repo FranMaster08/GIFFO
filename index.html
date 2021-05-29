@@ -162,9 +162,9 @@
 
                 <div class="iconos_favoritos_descargar">
 
-                    <span id="corazon2" class="corazon">
-                        <img class='guardar_favorito_corazon' src="./assets/icon-fav-active.svg" alt="">
-                    </span>
+                
+                    <img class='guardar_favorito_corazon modalfav' id="ModalFav" src="./assets/icon-fav-active.svg" alt="">
+                
 
                     <button class="borde_boton_descarga">
                         <img class="btn_descarga_mobile_2" id="btn_descarga_mobile" src="./assets/icon-download.svg"
@@ -172,7 +172,8 @@
                     </button>
 
                 </div>
-
+                <input type="text" id="flagMobile"
+                hidden value="false">
             </div>
 
         </div>
@@ -220,12 +221,13 @@
 
     <!-- footer finish here -->
 
-
-
-
+    <script src="./JS/global.js"></script>
+    <script src="./JS/favoritos.js"></script>
+    <script src="./JS/modal.js"></script>
     <script src="./JS/trending.js"></script>
     <script src="./JS/search.js"></script>
     <script src="./JS/night-mode.js"></script>
+    <script src="./JS/main.js"></script>
 </body>
 
 </html>

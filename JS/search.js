@@ -47,8 +47,6 @@ const autocomplete = async (ev) => {
 
 //getting input for search
 const searchContent = async () => {
-
-
     const gifosSearch = await getGifosSearch(Paginacion, searchInput?.value);
     fetchSearch(gifosSearch)
 
@@ -84,78 +82,36 @@ const fetchSearch = (arr, flagViemore = false) => {
         if (!flagViemore)
             searchResults.innerHTML = ""
         const containerGifos = document.querySelector('#resultados_busqueda')
-
-
-        arr.data.forEach(x => {
+       
+        let datos=arr.data.map(dato=>{
+          
+            return {
+                
+                   
+                    url:dato.images.fixed_height_small.url,
+                    username:dato.title,
+                    title:dato.title
+                
+            }
+        })
+  
+        datos.forEach(x => {
             gifosFound.push(x);
-            let images = document.createElement("img");
-            images.setAttribute("src", x.images.downsized.url);
-            images.classList.add("searchImg");
-            images.setAttribute('data-title', x.title);
-            images.setAttribute('data-username', x.username);
-            images.classList.add("sacarFavoritos");
-            images.setAttribute("id", "gif");
-            // images.style.height = "100%";
-            // images.style.width = "100%";
-            images.style.boxSizing = "border-box";
+            CreateCard(x, ['searchImg'], containerGifos, (e) => {
+                e.children[0].children[1].onclick = (y) => downloadGif(y.target.parentElement.parentElement.parentElement.parentElement.children[0],getRenderedImage())
+                e.children[0].children[0].onclick = (y) => addFav(y.target)
+                containerList.innerHTML = "";
+                let verMas = document.querySelector('#ver_mas');
+                verMas.style.visibility = 'visible';
+                verMas.addEventListener("click", viewMore);
 
-            let containerGifosHover = document.createElement("div");
-            containerGifosHover.style.display = "flex";
-            containerGifosHover.style.justifyContent = "space-around";
-            // containerGifosHover.style.height = "200px";
-            // containerGifosHover.style.width = "260px";
-            containerGifosHover.setAttribute("class", "contenedor_gifos_hover");
-            containerGifosHover.appendChild(images);
-            let mouseOverCard = document.createElement("div");
-            mouseOverCard.style.height = "100%";
-            mouseOverCard.style.width = "100%";
-            mouseOverCard.style.right = "0";
-            mouseOverCard.setAttribute("class", "mouse_over_tarjeta2 ");
-            mouseOverCard.innerHTML = `
-            <div class="opciones_mouse_over">
-                        <div class="borde_opciones_mause_over llegar_al_corazon">
-                            <img class = guardar_favorito_corazon src="./assets/icon-fav-hover.svg" alt="">
-                        </div>
-                        <div class="borde_opciones_mause_over click_descarga_gifo">
-                            <img class = "descargar_gifo_escritorio searchDownload" id = "descargar_escritorio" src="./assets/icon-download.svg" alt="">
-                        </div>
-                        <div id="borde_opciones_mause_over_id" class="borde_opciones_mause_over">
-                            <img src="./assets/icon-max-normal.svg"  class = "expandir_gifo_desktop" id ="expandir_gifo" alt="">
-                        </div>                    
-                    </div>
-                    <div class="usuario2_mouse_over">
-                        <h3 class ="gifo_usuario_hover">${x.username}</h3>
-                        <h2 class ="titulo_gifo_hover" class="titulo_gifo_hover">${x.title}</h2>
-            </div>`;;
-            containerGifosHover.appendChild(mouseOverCard);
-            containerGifos.appendChild(containerGifosHover);
-            images.addEventListener("click", modal);
-
+            })
 
         })
-        containerGifos.addEventListener('click', (e) => {
-
-            let objetivo = e.target.parentElement.parentElement.parentElement.parentElement.children[0]
-            console.log(e.target);
-            if (e.target.classList.contains('guardar_favorito_corazon'))
-                addFav(objetivo)
-
-            if (e.target.getAttribute('id') && e.target.getAttribute('id') == 'expandir_gifo')
-                modalDesktop(objetivo)
-        })
-
-        searchInput.innerText = "";
-
-        //show view more button
-        let verMas = document.querySelector('#ver_mas');
-        verMas.style.visibility = 'visible';
-        verMas.addEventListener("click", viewMore)
     }
-
 }
 
 searchInput?.addEventListener('keyup', autocomplete);
-
 
 document.addEventListener('keypress', async (e) => {
     if (e.key == "Enter") {
@@ -166,5 +122,3 @@ document.querySelector('#iconono_buscador').addEventListener('click', async (e) 
     e.preventDefault()
     searchContent()
 })
-
-searchResults?.addEventListener('click', downloadGif);

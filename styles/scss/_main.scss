@@ -198,17 +198,21 @@
             .contenedor_carrusel{
                 display: flex;
                 overflow:scroll;
+                overflow-y: hidden;
                 scroll-snap-type: x mandatory;
                 justify-content: space-between;
+                width: 100%;
 
                 .contenedor_gifos_hover{
                     width: 243px;
                     height: 187px;
                     position: relative;
+                    box-sizing: border-box;
 
                     .trending{
                         width: 243px;
                         height: 187px;
+                        align-self: center;
                         // padding-right: 20px;
                     }
                 }

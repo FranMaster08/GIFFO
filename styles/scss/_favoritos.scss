@@ -31,9 +31,14 @@
     display: grid;
     grid-template-columns: 156px 156px;
     grid-template-rows: 120px 120px 120px 120px 120px 120px;
-    grid-column-gap: 21px;
+    // grid-column-gap: 21px;
     grid-row-gap: 25px;
     justify-content: center;
+
+    .imgFav{
+        height: 100%;
+        width: 100%;
+    }
 
     .mouse_over_tarjeta2 {
 display: none;
@@ -107,6 +112,12 @@ display: none;
     grid-row-gap: 35px;
     justify-content: center;
     margin-bottom: 100px;
+
+
+    .imgFav{
+        height: 200px;
+        width: 260px;
+    }
     
 
 }
