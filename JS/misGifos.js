@@ -57,8 +57,10 @@ let renderMisGifos = () => {
   const misGifos = JSON.parse(localStorage.getItem("misGifos"));
   const urls = misGifos.map((id) => `https://i.giphy.com/${id}.gif`);
   localStorageGifsArray = urls.map((url) => {
-
-      CreateCard(x,['imgFav'],document.querySelector("#gifsCreados"))
+    let urlGif= {
+      url:url
+    }
+      CreateCard(urlGif,['imgFav'],document.querySelector("#gifsCreados"),(x)=>{x.parentElement.children[1].children[1].innerHTML=''})
 
       
   });
